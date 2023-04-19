@@ -175,6 +175,9 @@ var products_default = Product;
 // keystone.ts
 var keystone_default = (0, import_core3.config)(
   withAuth({
+    server: {
+      cors: { origin: ["http://localhost:3001"], credentials: true }
+    },
     db: {
       provider: "postgresql",
       url: "postgres://postgres:password@localhost:5432/project"

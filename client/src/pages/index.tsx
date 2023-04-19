@@ -27,7 +27,7 @@ export async function getStaticProps() {
 
 export default function Home(props: data) {
   const { data } = props;
-
+  console.log(data);
   return (
     <main>
       <h1>hello world</h1>
