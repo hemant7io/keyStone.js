@@ -53,11 +53,11 @@ var import_fields = require("@keystone-6/core/fields");
 
 // acces.ts
 function hasSession({ session: session2 }) {
-  console.log(session2);
+  console.log("access-9", session2);
   return Boolean(session2);
 }
 function isAdmin({ session: session2 }) {
-  console.log(session2);
+  console.log("isdamin", session2);
   if (!session2)
     return false;
   if (session2.data.isAdmin)
@@ -75,7 +75,8 @@ var User = (0, import_core.list)({
       delete: isAdmin
     },
     filter: {
-      update: isAdmin
+      query: import_access.allowAll
+      // update: isAdmin,
     },
     item: { update: isAdmin }
   },
@@ -87,11 +88,11 @@ var User = (0, import_core.list)({
       access: {
         create: import_access.allowAll,
         // only admins can update this field
-        read: isAdmin,
+        read: import_access.allowAll,
         update: isAdmin
       },
-      isFilterable: false,
-      isOrderable: false,
+      // isFilterable: false,
+      // isOrderable: false,
       validation: { isRequired: true },
       isIndexed: "unique"
     }),
@@ -118,17 +119,6 @@ var User = (0, import_core.list)({
       },
       defaultValue: false
     })
-  },
-  hooks: {
-    afterOperation: ({ operation, item }) => {
-      if (operation === "create") {
-        console.log(
-          `New user created. Name: ${item.name}, Email: ${item.email}`
-        );
-      } else {
-        console.log("err");
-      }
-    }
   }
 });
 var user_default = User;

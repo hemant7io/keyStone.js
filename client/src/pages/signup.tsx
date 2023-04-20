@@ -76,7 +76,7 @@ const User: NextPage = (props): JSX.Element => {
           Confrim Password
         </label>
         <input
-          value={password}
+          value={cpassword}
           onChange={(e) => setCpassword(e.target.value)}
           type="password"
           id="Cpassword"

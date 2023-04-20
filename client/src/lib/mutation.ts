@@ -5,6 +5,9 @@ export const SIGNIN_USER = gql`
     authenticateUserWithPassword(email: $email, password: $password) {
       ... on UserAuthenticationWithPasswordSuccess {
         sessionToken
+        item {
+          id
+        }
       }
       ... on UserAuthenticationWithPasswordFailure {
         message

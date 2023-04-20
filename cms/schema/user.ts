@@ -16,7 +16,8 @@ const User = list({
       delete: isAdmin,
     },
     filter: {
-      update: isAdmin,
+      query: allowAll,
+      // update: isAdmin,
     },
     item: { update: isAdmin },
   },
@@ -29,11 +30,11 @@ const User = list({
       access: {
         create: allowAll,
         // only admins can update this field
-        read: isAdmin,
+        read: allowAll,
         update: isAdmin,
       },
-      isFilterable: false,
-      isOrderable: false,
+      // isFilterable: false,
+      // isOrderable: false,
       validation: { isRequired: true },
       isIndexed: "unique",
     }),
@@ -60,17 +61,6 @@ const User = list({
       },
       defaultValue: false,
     }),
-  },
-  hooks: {
-    afterOperation: ({ operation, item }) => {
-      if (operation === "create") {
-        console.log(
-          `New user created. Name: ${item.name}, Email: ${item.email}`
-        );
-      } else {
-        console.log("err");
-      }
-    },
   },
 });
 

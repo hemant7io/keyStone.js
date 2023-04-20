@@ -17,6 +17,7 @@ type PasswordState {
 
 input UserWhereUniqueInput {
   id: ID
+  email: String
 }
 
 input UserWhereInput {
@@ -25,6 +26,7 @@ input UserWhereInput {
   NOT: [UserWhereInput!]
   id: IDFilter
   name: StringFilter
+  email: StringFilter
   posts: ProductManyRelationFilter
   isAdmin: BooleanFilter
 }
@@ -88,6 +90,7 @@ input BooleanFilter {
 input UserOrderByInput {
   id: OrderDirection
   name: OrderDirection
+  email: OrderDirection
   isAdmin: OrderDirection
 }
 

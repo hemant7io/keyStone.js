@@ -27,7 +27,7 @@ const User: NextPage = (props): JSX.Element => {
   if (error) {
     return <h1>error</h1>;
   }
-  console.log(data?.authenticateUserWithPassword?.sessionToken);
+
   if (data?.authenticateUserWithPassword?.sessionToken) {
     router.push("/");
     localStorage.setItem(

@@ -27,10 +27,17 @@ export async function getStaticProps() {
 
 export default function Home(props: data) {
   const { data } = props;
-  console.log(data);
   return (
     <main>
-      <h1>hello world</h1>
+      {data?.map((item: any, index) => (
+        <>
+          <div className="shadow p-4 border w-[400px] m-4">
+            <h1>{item?.title}</h1>
+            <h5>{item?.price}</h5>
+            <p>{item?.description}</p>
+          </div>
+        </>
+      ))}
     </main>
   );
 }

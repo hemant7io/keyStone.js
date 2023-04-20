@@ -2,11 +2,12 @@ import { useEffect } from "react";
 import Link from "next/link";
 import React, { useState, useContext } from "react";
 import { AiOutlineBars } from "react-icons/ai";
+import { useRouter } from "next/router";
 
 const Header = () => {
   const [togglevalue, setToggleValue] = useState(false);
   const [token, setToken] = useState("");
-
+  const router = useRouter();
   const togglehandler = () => {
     togglevalue ? setToggleValue(false) : setToggleValue(true);
   };
@@ -14,6 +15,7 @@ const Header = () => {
   const logoutHandler = () => {
     localStorage.removeItem("token");
     setToken("");
+    router.push("/signin");
   };
   useEffect(() => {
     const data = localStorage.getItem("token");
@@ -44,12 +46,19 @@ const Header = () => {
           </li>
 
           {token ? (
-            <button
-              className="bg-blue-500 px-4 py-2 rounded"
-              onClick={logoutHandler}
-            >
-              Logout
-            </button>
+            <>
+              <li className="mx-2 p-2 cursor-pointer hover:text-[#ffb366]">
+                <Link href="/user-profile" onClick={togglehandler}>
+                  Profile
+                </Link>
+              </li>
+              <button
+                className="bg-blue-500 px-4 py-2 rounded"
+                onClick={logoutHandler}
+              >
+                Logout
+              </button>
+            </>
           ) : (
             <>
               <li className="mx-2 p-2 cursor-pointer hover:text-[#ffb366]">

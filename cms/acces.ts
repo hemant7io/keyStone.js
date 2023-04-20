@@ -6,12 +6,12 @@ type Session = {
 };
 
 function hasSession({ session }: { session: Session | undefined }) {
-  console.log(session);
+  console.log("access-9", session);
   return Boolean(session);
 }
 
 function isAdmin({ session }: { session: Session | undefined }) {
-  console.log(session);
+  console.log("isdamin", session);
   // you need to have a session to do this
   if (!session) return false;
   // admins can do anything
