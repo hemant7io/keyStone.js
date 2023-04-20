@@ -12,3 +12,13 @@ export const SIGNIN_USER = gql`
     }
   }
 `;
+
+export const SIGNUP_USER = gql`
+  mutation Mutation($data: UserCreateInput!) {
+    createUser(data: $data) {
+      name
+      email
+      id
+    }
+  }
+`;

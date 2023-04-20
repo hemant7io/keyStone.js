@@ -61,6 +61,17 @@ const User = list({
       defaultValue: false,
     }),
   },
+  hooks: {
+    afterOperation: ({ operation, item }) => {
+      if (operation === "create") {
+        console.log(
+          `New user created. Name: ${item.name}, Email: ${item.email}`
+        );
+      } else {
+        console.log("err");
+      }
+    },
+  },
 });
 
 export default User;
